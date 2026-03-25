@@ -1,0 +1,570 @@
+<!DOCTYPE html>
+<html lang="ca">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Transparència - Coordinadora Sagrada Família</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;900&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #984c4c;
+            --primary-light: #b36060;
+            --secondary: #D4A574;
+            --accent: #E8956B;
+            --dark: #1A1A1A;
+            --light: #FAFAF8;
+            --gray: #6B7280;
+            --gray-light: #F3F4F6;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'DM Sans', sans-serif;
+            color: var(--dark);
+            background: var(--light);
+            line-height: 1.7;
+        }
+
+        /* Header */
+        header {
+            background: white;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.06);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .header-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 3rem;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .logo-img {
+            width: 60px;
+            height: 60px;
+            background: var(--primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 700;
+            font-size: 1.5rem;
+        }
+
+        .logo-text {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--primary);
+            line-height: 1.3;
+        }
+
+        nav ul {
+            display: flex;
+            gap: 2.5rem;
+            list-style: none;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: color 0.3s ease;
+        }
+
+        nav a:hover {
+            color: var(--primary);
+        }
+
+        /* Page Hero */
+        .page-hero {
+            background: linear-gradient(135deg, rgba(152, 76, 76, 0.95) 0%, rgba(179, 96, 96, 0.9) 100%),
+                        url('https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=1920&q=80') center/cover;
+            color: white;
+            padding: 5rem 3rem 3rem;
+            text-align: center;
+        }
+
+        .page-hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.5rem;
+            font-weight: 900;
+            margin-bottom: 1rem;
+        }
+
+        .page-hero p {
+            font-size: 1.2rem;
+            opacity: 0.95;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        /* Main Content */
+        .main-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 5rem 3rem;
+        }
+
+        /* Filter Section */
+        .filter-section {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+            margin-bottom: 3rem;
+            display: flex;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+
+        .filter-label {
+            font-weight: 600;
+            color: var(--dark);
+        }
+
+        .filter-buttons {
+            display: flex;
+            gap: 0.75rem;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            padding: 0.5rem 1.2rem;
+            border: 2px solid var(--gray-light);
+            background: white;
+            border-radius: 25px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            color: var(--gray);
+        }
+
+        .filter-btn:hover, .filter-btn.active {
+            border-color: var(--primary);
+            background: var(--primary);
+            color: white;
+        }
+
+        /* Documents Grid */
+        .documents-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+
+        .document-card {
+            background: white;
+            border-radius: 15px;
+            padding: 2rem;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+            display: flex;
+            gap: 1.5rem;
+        }
+
+        .document-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.1);
+            border-color: var(--secondary);
+        }
+
+        .document-icon {
+            flex-shrink: 0;
+        }
+
+        .document-icon svg {
+            width: 60px;
+            height: 60px;
+        }
+
+        .document-content {
+            flex: 1;
+        }
+
+        .document-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.3rem;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+
+        .document-meta {
+            display: flex;
+            gap: 1.5rem;
+            margin-bottom: 1rem;
+            font-size: 0.9rem;
+            color: var(--gray);
+        }
+
+        .document-meta span {
+            display: flex;
+            align-items: center;
+            gap: 0.3rem;
+        }
+
+        .document-category {
+            display: inline-block;
+            background: var(--gray-light);
+            color: var(--primary);
+            padding: 0.3rem 0.8rem;
+            border-radius: 15px;
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+
+        .document-actions {
+            margin-top: 1rem;
+            display: flex;
+            gap: 1rem;
+        }
+
+        .btn-download {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: var(--primary);
+            color: white;
+            padding: 0.6rem 1.2rem;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+        }
+
+        .btn-download:hover {
+            background: var(--primary-light);
+            transform: translateY(-2px);
+        }
+
+        .btn-view {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: transparent;
+            color: var(--primary);
+            padding: 0.6rem 1.2rem;
+            border: 2px solid var(--primary);
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+        }
+
+        .btn-view:hover {
+            background: var(--primary);
+            color: white;
+        }
+
+        /* Info Banner */
+        .info-banner {
+            background: linear-gradient(135deg, #FFF9E6 0%, #FFF5DB 100%);
+            border-left: 4px solid var(--secondary);
+            padding: 2rem;
+            border-radius: 15px;
+            margin-bottom: 3rem;
+        }
+
+        .info-banner h3 {
+            color: var(--primary);
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .info-banner p {
+            color: var(--gray);
+            line-height: 1.8;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--dark);
+            color: white;
+            padding: 3rem;
+            margin-top: 5rem;
+            text-align: center;
+        }
+
+        footer p {
+            color: rgba(255,255,255,0.7);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <div class="header-content">
+            <div class="logo">
+                <div class="logo-img">SF</div>
+                <div class="logo-text">
+                    Coordinadora d'Entitats<br>
+                    <span style="font-weight: 400; font-size: 0.85rem;">Sagrada Família</span>
+                </div>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#">Inici</a></li>
+                    <li><a href="#">Qui som</a></li>
+                    <li><a href="#">Propòsit</a></li>
+                    <li><a href="#" style="color: var(--primary); font-weight: 600;">Transparència</a></li>
+                    <li><a href="#">Actualitat</a></li>
+                    <li><a href="#">Entitats</a></li>
+                    <li><a href="#">Contacte</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Page Hero -->
+    <section class="page-hero">
+        <h1>Transparència</h1>
+        <p>Accés públic a tots els documents, actes i acords de la Coordinadora</p>
+    </section>
+
+    <!-- Main Content -->
+    <div class="main-content">
+        
+        <!-- Info Banner -->
+        <div class="info-banner">
+            <h3>Compromís amb la transparència</h3>
+            <p>A la Coordinadora d'Entitats de la Sagrada Família creiem en la transparència com a pilar fonamental de la nostra gestió. Aquí trobaràs tots els documents públics, actes de reunions, comptes i acords presos per l'entitat. Tots els documents es publiquen de manera periòdica i estan disponibles per a la seva descàrrega.</p>
+        </div>
+
+        <!-- Filters -->
+        <div class="filter-section">
+            <span class="filter-label">Filtrar per:</span>
+            <div class="filter-buttons">
+                <button class="filter-btn active">Tots</button>
+                <button class="filter-btn">Actes</button>
+                <button class="filter-btn">Comptes</button>
+                <button class="filter-btn">Estatuts</button>
+                <button class="filter-btn">Convocatòries</button>
+                <button class="filter-btn">Memòries</button>
+            </div>
+        </div>
+
+        <!-- Documents Grid -->
+        <div class="documents-grid">
+            
+            <!-- Document 1 -->
+            <div class="document-card">
+                <div class="document-icon">
+                    <svg viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <rect x="10" y="5" width="40" height="50" rx="3" fill="#984c4c" opacity="0.1"/>
+                        <rect x="10" y="5" width="40" height="50" rx="3" stroke="#984c4c" stroke-width="2"/>
+                        <line x1="18" y1="15" x2="42" y2="15" stroke="#984c4c" stroke-width="2" stroke-linecap="round"/>
+                        <line x1="18" y1="23" x2="42" y2="23" stroke="#984c4c" stroke-width="2" stroke-linecap="round"/>
+                        <line x1="18" y1="31" x2="35" y2="31" stroke="#984c4c" stroke-width="2" stroke-linecap="round"/>
+                        <circle cx="30" cy="43" r="8" fill="#D4A574"/>
+                        <text x="30" y="48" text-anchor="middle" fill="white" font-size="10" font-weight="bold">PDF</text>
+                    </svg>
+                </div>
+                <div class="document-content">
+                    <h3 class="document-title">Acta Assemblea General 2025</h3>
+                    <div class="document-meta">
+                        <span>📅 15 Març 2025</span>
+                        <span>📄 2.3 MB</span>
+                    </div>
+                    <span class="document-category">Actes</span>
+                    <div class="document-actions">
+                        <a href="#" class="btn-download">
+                            <span>⬇</span> Descarregar
+                        </a>
+                        <a href="#" class="btn-view">
+                            <span>👁</span> Veure
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Document 2 -->
+            <div class="document-card">
+                <div class="document-icon">
+                    <svg viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <rect x="10" y="5" width="40" height="50" rx="3" fill="#984c4c" opacity="0.1"/>
+                        <rect x="10" y="5" width="40" height="50" rx="3" stroke="#984c4c" stroke-width="2"/>
+                        <line x1="18" y1="15" x2="42" y2="15" stroke="#984c4c" stroke-width="2" stroke-linecap="round"/>
+                        <line x1="18" y1="23" x2="42" y2="23" stroke="#984c4c" stroke-width="2" stroke-linecap="round"/>
+                        <line x1="18" y1="31" x2="35" y2="31" stroke="#984c4c" stroke-width="2" stroke-linecap="round"/>
+                        <circle cx="30" cy="43" r="8" fill="#D4A574"/>
+                        <text x="30" y="48" text-anchor="middle" fill="white" font-size="10" font-weight="bold">PDF</text>
+                    </svg>
+                </div>
+                <div class="document-content">
+                    <h3 class="document-title">Comptes Anuals 2024</h3>
+                    <div class="document-meta">
+                        <span>📅 10 Gener 2025</span>
+                        <span>📄 1.8 MB</span>
+                    </div>
+                    <span class="document-category">Comptes</span>
+                    <div class="document-actions">
+                        <a href="#" class="btn-download">
+                            <span>⬇</span> Descarregar
+                        </a>
+                        <a href="#" class="btn-view">
+                            <span>👁</span> Veure
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Document 3 -->
+            <div class="document-card">
+                <div class="document-icon">
+                    <svg viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <rect x="10" y="5" width="40" height="50" rx="3" fill="#984c4c" opacity="0.1"/>
+                        <rect x="10" y="5" width="40" height="50" rx="3" stroke="#984c4c" stroke-width="2"/>
+                        <line x1="18" y1="15" x2="42" y2="15" stroke="#984c4c" stroke-width="2" stroke-linecap="round"/>
+                        <line x1="18" y1="23" x2="42" y2="23" stroke="#984c4c" stroke-width="2" stroke-linecap="round"/>
+                        <line x1="18" y1="31" x2="35" y2="31" stroke="#984c4c" stroke-width="2" stroke-linecap="round"/>
+                        <circle cx="30" cy="43" r="8" fill="#D4A574"/>
+                        <text x="30" y="48" text-anchor="middle" fill="white" font-size="10" font-weight="bold">PDF</text>
+                    </svg>
+                </div>
+                <div class="document-content">
+                    <h3 class="document-title">Estatuts de la Coordinadora</h3>
+                    <div class="document-meta">
+                        <span>📅 20 Desembre 2024</span>
+                        <span>📄 950 KB</span>
+                    </div>
+                    <span class="document-category">Estatuts</span>
+                    <div class="document-actions">
+                        <a href="#" class="btn-download">
+                            <span>⬇</span> Descarregar
+                        </a>
+                        <a href="#" class="btn-view">
+                            <span>👁</span> Veure
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Document 4 -->
+            <div class="document-card">
+                <div class="document-icon">
+                    <svg viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <rect x="10" y="5" width="40" height="50" rx="3" fill="#984c4c" opacity="0.1"/>
+                        <rect x="10" y="5" width="40" height="50" rx="3" stroke="#984c4c" stroke-width="2"/>
+                        <line x1="18" y1="15" x2="42" y2="15" stroke="#984c4c" stroke-width="2" stroke-linecap="round"/>
+                        <line x1="18" y1="23" x2="42" y2="23" stroke="#984c4c" stroke-width="2" stroke-linecap="round"/>
+                        <line x1="18" y1="31" x2="35" y2="31" stroke="#984c4c" stroke-width="2" stroke-linecap="round"/>
+                        <circle cx="30" cy="43" r="8" fill="#D4A574"/>
+                        <text x="30" y="48" text-anchor="middle" fill="white" font-size="10" font-weight="bold">PDF</text>
+                    </svg>
+                </div>
+                <div class="document-content">
+                    <h3 class="document-title">Memòria d'Activitats 2024</h3>
+                    <div class="document-meta">
+                        <span>📅 05 Gener 2025</span>
+                        <span>📄 4.2 MB</span>
+                    </div>
+                    <span class="document-category">Memòries</span>
+                    <div class="document-actions">
+                        <a href="#" class="btn-download">
+                            <span>⬇</span> Descarregar
+                        </a>
+                        <a href="#" class="btn-view">
+                            <span>👁</span> Veure
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Document 5 -->
+            <div class="document-card">
+                <div class="document-icon">
+                    <svg viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <rect x="10" y="5" width="40" height="50" rx="3" fill="#984c4c" opacity="0.1"/>
+                        <rect x="10" y="5" width="40" height="50" rx="3" stroke="#984c4c" stroke-width="2"/>
+                        <line x1="18" y1="15" x2="42" y2="15" stroke="#984c4c" stroke-width="2" stroke-linecap="round"/>
+                        <line x1="18" y1="23" x2="42" y2="23" stroke="#984c4c" stroke-width="2" stroke-linecap="round"/>
+                        <line x1="18" y1="31" x2="35" y2="31" stroke="#984c4c" stroke-width="2" stroke-linecap="round"/>
+                        <circle cx="30" cy="43" r="8" fill="#D4A574"/>
+                        <text x="30" y="48" text-anchor="middle" fill="white" font-size="10" font-weight="bold">PDF</text>
+                    </svg>
+                </div>
+                <div class="document-content">
+                    <h3 class="document-title">Convocatòria Festa Major 2025</h3>
+                    <div class="document-meta">
+                        <span>📅 28 Febrer 2025</span>
+                        <span>📄 1.1 MB</span>
+                    </div>
+                    <span class="document-category">Convocatòries</span>
+                    <div class="document-actions">
+                        <a href="#" class="btn-download">
+                            <span>⬇</span> Descarregar
+                        </a>
+                        <a href="#" class="btn-view">
+                            <span>👁</span> Veure
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Document 6 -->
+            <div class="document-card">
+                <div class="document-icon">
+                    <svg viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <rect x="10" y="5" width="40" height="50" rx="3" fill="#984c4c" opacity="0.1"/>
+                        <rect x="10" y="5" width="40" height="50" rx="3" stroke="#984c4c" stroke-width="2"/>
+                        <line x1="18" y1="15" x2="42" y2="15" stroke="#984c4c" stroke-width="2" stroke-linecap="round"/>
+                        <line x1="18" y1="23" x2="42" y2="23" stroke="#984c4c" stroke-width="2" stroke-linecap="round"/>
+                        <line x1="18" y1="31" x2="35" y2="31" stroke="#984c4c" stroke-width="2" stroke-linecap="round"/>
+                        <circle cx="30" cy="43" r="8" fill="#D4A574"/>
+                        <text x="30" y="48" text-anchor="middle" fill="white" font-size="10" font-weight="bold">PDF</text>
+                    </svg>
+                </div>
+                <div class="document-content">
+                    <h3 class="document-title">Acta Reunió Junta - Desembre 2024</h3>
+                    <div class="document-meta">
+                        <span>📅 15 Desembre 2024</span>
+                        <span>📄 780 KB</span>
+                    </div>
+                    <span class="document-category">Actes</span>
+                    <div class="document-actions">
+                        <a href="#" class="btn-download">
+                            <span>⬇</span> Descarregar
+                        </a>
+                        <a href="#" class="btn-view">
+                            <span>👁</span> Veure
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2025 Coordinadora d'Entitats Sagrada Família</p>
+    </footer>
+
+</body>
+</html>

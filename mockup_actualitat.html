@@ -1,0 +1,563 @@
+<!DOCTYPE html>
+<html lang="ca">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Actualitat - Coordinadora Sagrada Família</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;900&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #984c4c;
+            --primary-light: #b36060;
+            --secondary: #D4A574;
+            --accent: #E8956B;
+            --dark: #1A1A1A;
+            --light: #FAFAF8;
+            --gray: #6B7280;
+            --gray-light: #F3F4F6;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'DM Sans', sans-serif;
+            color: var(--dark);
+            background: var(--light);
+            line-height: 1.7;
+        }
+
+        /* Header */
+        header {
+            background: white;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.06);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .header-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 3rem;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .logo-img {
+            width: 60px;
+            height: 60px;
+            background: var(--primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 700;
+            font-size: 1.5rem;
+        }
+
+        .logo-text {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--primary);
+            line-height: 1.3;
+        }
+
+        nav ul {
+            display: flex;
+            gap: 2.5rem;
+            list-style: none;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: color 0.3s ease;
+        }
+
+        nav a:hover {
+            color: var(--primary);
+        }
+
+        /* Page Hero */
+        .page-hero {
+            background: linear-gradient(135deg, rgba(152, 76, 76, 0.95) 0%, rgba(179, 96, 96, 0.9) 100%),
+                        url('https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=1920&q=80') center/cover;
+            color: white;
+            padding: 5rem 3rem 3rem;
+            text-align: center;
+        }
+
+        .page-hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.5rem;
+            font-weight: 900;
+            margin-bottom: 1rem;
+        }
+
+        .page-hero p {
+            font-size: 1.2rem;
+            opacity: 0.95;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        /* Main Content */
+        .main-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 5rem 3rem;
+        }
+
+        /* Category Filter */
+        .category-filter {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 3rem;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .category-btn {
+            padding: 0.7rem 1.5rem;
+            border: 2px solid var(--gray-light);
+            background: white;
+            border-radius: 30px;
+            font-size: 1rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            color: var(--gray);
+        }
+
+        .category-btn:hover, .category-btn.active {
+            border-color: var(--primary);
+            background: var(--primary);
+            color: white;
+        }
+
+        /* Blog Grid */
+        .blog-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
+            gap: 2.5rem;
+        }
+
+        .blog-card {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .blog-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+        }
+
+        .blog-image {
+            height: 250px;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+        }
+
+        .blog-category {
+            position: absolute;
+            top: 1.5rem;
+            left: 1.5rem;
+            background: var(--primary);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .blog-content {
+            padding: 2rem;
+        }
+
+        .blog-meta {
+            display: flex;
+            gap: 1.5rem;
+            margin-bottom: 1rem;
+            font-size: 0.9rem;
+            color: var(--gray);
+        }
+
+        .blog-meta span {
+            display: flex;
+            align-items: center;
+            gap: 0.3rem;
+        }
+
+        .blog-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            color: var(--dark);
+            margin-bottom: 1rem;
+            font-weight: 700;
+            line-height: 1.4;
+        }
+
+        .blog-excerpt {
+            color: var(--gray);
+            line-height: 1.7;
+            margin-bottom: 1.5rem;
+        }
+
+        .blog-author {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid var(--gray-light);
+        }
+
+        .author-avatar {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 700;
+            font-size: 1.1rem;
+        }
+
+        .author-info {
+            flex: 1;
+        }
+
+        .author-name {
+            font-weight: 600;
+            color: var(--dark);
+            font-size: 0.95rem;
+        }
+
+        .author-role {
+            font-size: 0.85rem;
+            color: var(--gray);
+        }
+
+        .read-more {
+            color: var(--primary);
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: gap 0.3s ease;
+        }
+
+        .read-more:hover {
+            gap: 0.8rem;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--dark);
+            color: white;
+            padding: 3rem;
+            margin-top: 5rem;
+            text-align: center;
+        }
+
+        footer p {
+            color: rgba(255,255,255,0.7);
+        }
+
+        /* Featured Post */
+        .featured-post {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+            display: grid;
+            grid-template-columns: 1.2fr 1fr;
+            margin-bottom: 4rem;
+        }
+
+        .featured-image {
+            background: linear-gradient(135deg, rgba(152, 76, 76, 0.3) 0%, rgba(212, 165, 116, 0.3) 100%),
+                        url('https://images.unsplash.com/photo-1527975373525-6c003775eac6?w=800&q=80') center/cover;
+            min-height: 400px;
+        }
+
+        .featured-content {
+            padding: 3rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .featured-badge {
+            display: inline-block;
+            background: var(--secondary);
+            color: var(--dark);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 1rem;
+            width: fit-content;
+        }
+
+        .featured-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.2rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+            line-height: 1.3;
+        }
+
+        .featured-excerpt {
+            color: var(--gray);
+            font-size: 1.1rem;
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+        }
+
+        .featured-meta {
+            display: flex;
+            gap: 2rem;
+            margin-bottom: 2rem;
+            color: var(--gray);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <div class="header-content">
+            <div class="logo">
+                <div class="logo-img">SF</div>
+                <div class="logo-text">
+                    Coordinadora d'Entitats<br>
+                    <span style="font-weight: 400; font-size: 0.85rem;">Sagrada Família</span>
+                </div>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#">Inici</a></li>
+                    <li><a href="#">Qui som</a></li>
+                    <li><a href="#">Propòsit</a></li>
+                    <li><a href="#">Transparència</a></li>
+                    <li><a href="#" style="color: var(--primary); font-weight: 600;">Actualitat</a></li>
+                    <li><a href="#">Entitats</a></li>
+                    <li><a href="#">Contacte</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Page Hero -->
+    <section class="page-hero">
+        <h1>Actualitat del Barri</h1>
+        <p>Notícies, esdeveniments i novetats de la Coordinadora i les entitats del barri</p>
+    </section>
+
+    <!-- Main Content -->
+    <div class="main-content">
+        
+        <!-- Featured Post -->
+        <div class="featured-post">
+            <div class="featured-image"></div>
+            <div class="featured-content">
+                <span class="featured-badge">Destacat</span>
+                <h2 class="featured-title">Prepara't per a la Festa Major 2025</h2>
+                <p class="featured-excerpt">Aquest any celebrem la nostra festa amb un programa ple d'activitats per a tots els públics. 15 dies de cultura popular, música i tradició catalana.</p>
+                <div class="featured-meta">
+                    <span>📅 4 d'abril, 2025</span>
+                    <span>✍️ Junta Coordinadora</span>
+                </div>
+                <a href="#" class="read-more">Llegir més →</a>
+            </div>
+        </div>
+
+        <!-- Category Filter -->
+        <div class="category-filter">
+            <button class="category-btn active">Totes</button>
+            <button class="category-btn">Esdeveniments</button>
+            <button class="category-btn">Novetats</button>
+            <button class="category-btn">Cultura</button>
+            <button class="category-btn">Entitats</button>
+            <button class="category-btn">Barri</button>
+        </div>
+
+        <!-- Blog Grid -->
+        <div class="blog-grid">
+            
+            <!-- Post 1 -->
+            <article class="blog-card">
+                <div class="blog-image" style="background-image: url('https://images.unsplash.com/photo-1533174072545-7a4b6ad7a6c3?w=800&q=80');">
+                    <span class="blog-category">Esdeveniments</span>
+                </div>
+                <div class="blog-content">
+                    <div class="blog-meta">
+                        <span>📅 18 Març 2025</span>
+                        <span>⏱️ 5 min</span>
+                    </div>
+                    <h3 class="blog-title">Nova seu per l'Associació de Veïns</h3>
+                    <p class="blog-excerpt">L'Associació de Veïns i Veïnes de la Sagrada Família estrena nou espai al carrer Mallorca. Un local més ampli per a les activitats del barri.</p>
+                    <div class="blog-author">
+                        <div class="author-avatar">AV</div>
+                        <div class="author-info">
+                            <div class="author-name">Associació de Veïns</div>
+                            <div class="author-role">Entitat membre</div>
+                        </div>
+                        <a href="#" class="read-more">→</a>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Post 2 -->
+            <article class="blog-card">
+                <div class="blog-image" style="background-image: url('https://images.unsplash.com/photo-1511795409834-ef04bbd61622?w=800&q=80');">
+                    <span class="blog-category">Cultura</span>
+                </div>
+                <div class="blog-content">
+                    <div class="blog-meta">
+                        <span>📅 15 Març 2025</span>
+                        <span>⏱️ 3 min</span>
+                    </div>
+                    <h3 class="blog-title">Els Castellers tornen a assajar</h3>
+                    <p class="blog-excerpt">Després de la pausa hivernal, els Castellers de la Sagrada Família reprenen els assaigs de cara a la temporada de castells 2025.</p>
+                    <div class="blog-author">
+                        <div class="author-avatar">CS</div>
+                        <div class="author-info">
+                            <div class="author-name">Castellers SF</div>
+                            <div class="author-role">Entitat membre</div>
+                        </div>
+                        <a href="#" class="read-more">→</a>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Post 3 -->
+            <article class="blog-card">
+                <div class="blog-image" style="background-image: url('https://images.unsplash.com/photo-1517457373958-b7bdd4587205?w=800&q=80');">
+                    <span class="blog-category">Barri</span>
+                </div>
+                <div class="blog-content">
+                    <div class="blog-meta">
+                        <span>📅 12 Març 2025</span>
+                        <span>⏱️ 4 min</span>
+                    </div>
+                    <h3 class="blog-title">Millores al Mercat de la Sagrada Família</h3>
+                    <p class="blog-excerpt">El Mercat de la Sagrada Família inicia obres de modernització que inclouran nous espais i millores en l'accessibilitat.</p>
+                    <div class="blog-author">
+                        <div class="author-avatar">JC</div>
+                        <div class="author-info">
+                            <div class="author-name">Junta Coordinadora</div>
+                            <div class="author-role">Coordinadora SF</div>
+                        </div>
+                        <a href="#" class="read-more">→</a>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Post 4 -->
+            <article class="blog-card">
+                <div class="blog-image" style="background-image: url('https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=800&q=80');">
+                    <span class="blog-category">Novetats</span>
+                </div>
+                <div class="blog-content">
+                    <div class="blog-meta">
+                        <span>📅 10 Març 2025</span>
+                        <span>⏱️ 6 min</span>
+                    </div>
+                    <h3 class="blog-title">Nou taller de circ al Centre Cívic</h3>
+                    <p class="blog-excerpt">El Centre Cívic Sagrada Família obrirà inscripcions per un nou taller de circ adreçat a joves de 12 a 16 anys.</p>
+                    <div class="blog-author">
+                        <div class="author-avatar">CC</div>
+                        <div class="author-info">
+                            <div class="author-name">Centre Cívic SF</div>
+                            <div class="author-role">Entitat membre</div>
+                        </div>
+                        <a href="#" class="read-more">→</a>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Post 5 -->
+            <article class="blog-card">
+                <div class="blog-image" style="background-image: url('https://images.unsplash.com/photo-1528605248644-14dd04022da1?w=800&q=80');">
+                    <span class="blog-category">Entitats</span>
+                </div>
+                <div class="blog-content">
+                    <div class="blog-meta">
+                        <span>📅 8 Març 2025</span>
+                        <span>⏱️ 4 min</span>
+                    </div>
+                    <h3 class="blog-title">Jornada portes obertes a Hèlia</h3>
+                    <p class="blog-excerpt">L'Associació Hèlia organitza una jornada de portes obertes per donar a conèixer les seves activitats i projectes.</p>
+                    <div class="blog-author">
+                        <div class="author-avatar">AH</div>
+                        <div class="author-info">
+                            <div class="author-name">Associació Hèlia</div>
+                            <div class="author-role">Entitat membre</div>
+                        </div>
+                        <a href="#" class="read-more">→</a>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Post 6 -->
+            <article class="blog-card">
+                <div class="blog-image" style="background-image: url('https://images.unsplash.com/photo-1519834785169-98be25ec3f84?w=800&q=80');">
+                    <span class="blog-category">Cultura</span>
+                </div>
+                <div class="blog-content">
+                    <div class="blog-meta">
+                        <span>📅 5 Març 2025</span>
+                        <span>⏱️ 5 min</span>
+                    </div>
+                    <h3 class="blog-title">Concert del Cor Polifònic a la Basílica</h3>
+                    <p class="blog-excerpt">El Cor Polifònic Sagrada Família oferirà un concert especial a la Basílica amb motiu de la Setmana Santa.</p>
+                    <div class="blog-author">
+                        <div class="author-avatar">CP</div>
+                        <div class="author-info">
+                            <div class="author-name">Cor Polifònic SF</div>
+                            <div class="author-role">Entitat membre</div>
+                        </div>
+                        <a href="#" class="read-more">→</a>
+                    </div>
+                </div>
+            </article>
+
+        </div>
+
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2025 Coordinadora d'Entitats Sagrada Família</p>
+    </footer>
+
+</body>
+</html>

@@ -1,0 +1,936 @@
+<!DOCTYPE html>
+<html lang="ca">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coordinadora d'Entitats Sagrada Família - Proposta de Disseny</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;900&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #984c4c;
+            --primary-light: #b36060;
+            --secondary: #D4A574;
+            --accent: #E8956B;
+            --dark: #1A1A1A;
+            --light: #FAFAF8;
+            --gray: #6B7280;
+            --gray-light: #F3F4F6;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'DM Sans', sans-serif;
+            color: var(--dark);
+            background: var(--light);
+            line-height: 1.7;
+        }
+
+        /* Header & Navigation */
+        header {
+            background: white;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.06);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .header-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 3rem;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .logo-img {
+            width: 60px;
+            height: 60px;
+            background: var(--primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 700;
+            font-size: 1.5rem;
+        }
+
+        .logo-text {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--primary);
+            line-height: 1.3;
+        }
+
+        nav ul {
+            display: flex;
+            gap: 2.5rem;
+            list-style: none;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary);
+            transition: width 0.3s ease;
+        }
+
+        nav a:hover {
+            color: var(--primary);
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, rgba(152, 76, 76, 0.92) 0%, rgba(179, 96, 96, 0.88) 100%),
+                        url('https://images.unsplash.com/photo-1583422409516-2895a77efded?w=1920&q=85') center/cover;
+            color: white;
+            padding: 6rem 3rem;
+            position: relative;
+            overflow: hidden;
+            min-height: 600px;
+            display: flex;
+            align-items: center;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(255,255,255,0.08) 0%, transparent 70%);
+            border-radius: 50%;
+            transform: translate(30%, -30%);
+        }
+
+        .hero-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 4rem;
+            font-weight: 900;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            max-width: 800px;
+            text-shadow: 0 2px 20px rgba(0,0,0,0.2);
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            max-width: 600px;
+            margin-bottom: 2.5rem;
+            opacity: 0.98;
+            font-weight: 300;
+            text-shadow: 0 1px 10px rgba(0,0,0,0.2);
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: var(--secondary);
+            color: var(--dark);
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(212,165,116,0.3);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 15px 40px rgba(212,165,116,0.4);
+        }
+
+        /* Eventos destacados */
+        .featured-event {
+            background: white;
+            max-width: 1400px;
+            margin: -4rem auto 4rem;
+            position: relative;
+            z-index: 2;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.1);
+            overflow: hidden;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+        }
+
+        .event-image {
+            background: linear-gradient(135deg, rgba(152, 76, 76, 0.85) 0%, rgba(212, 165, 116, 0.75) 100%),
+                        url('https://images.unsplash.com/photo-1562883676-8c7feb83f09b?w=800&q=80') center/cover;
+            min-height: 400px;
+            position: relative;
+        }
+
+        .event-content {
+            padding: 3rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .event-tag {
+            display: inline-block;
+            background: var(--primary);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 1rem;
+            width: fit-content;
+        }
+
+        .event-content h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: var(--primary);
+        }
+
+        .event-date {
+            font-size: 1.1rem;
+            color: var(--gray);
+            margin-bottom: 1.5rem;
+        }
+
+        /* Sections */
+        .section {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 5rem 3rem;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: var(--primary);
+        }
+
+        .section-subtitle {
+            font-size: 1.2rem;
+            color: var(--gray);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        /* SVG Icons */
+        .icon-card {
+            width: 80px;
+            height: 80px;
+            margin-bottom: 1.5rem;
+        }
+
+        .icon-card svg {
+            width: 100%;
+            height: 100%;
+        }
+
+        /* Entidades Grid */
+        .entities-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 2rem;
+        }
+
+        .entity-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+
+        .entity-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.1);
+            border-color: var(--secondary);
+        }
+
+        .entity-card h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.3rem;
+            color: var(--primary);
+            margin-bottom: 0.8rem;
+        }
+
+        .entity-contact {
+            color: var(--gray);
+            font-size: 0.95rem;
+            word-break: break-word;
+        }
+
+        .entity-contact a {
+            color: var(--accent);
+            text-decoration: none;
+        }
+
+        /* Eventos Section */
+        .events-timeline {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+            gap: 3rem;
+            margin-top: 3rem;
+        }
+
+        .timeline-card {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.08);
+            transition: transform 0.3s ease;
+        }
+
+        .timeline-card:hover {
+            transform: scale(1.02);
+        }
+
+        .timeline-image {
+            height: 280px;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+        }
+
+        .timeline-image::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 120px;
+            background: linear-gradient(to top, rgba(0,0,0,0.7), transparent);
+        }
+
+        .timeline-badge {
+            position: absolute;
+            bottom: 1.5rem;
+            left: 1.5rem;
+            background: var(--secondary);
+            color: var(--dark);
+            padding: 0.5rem 1.2rem;
+            border-radius: 30px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            z-index: 1;
+        }
+
+        .timeline-content {
+            padding: 2rem;
+        }
+
+        .timeline-content h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+
+        .timeline-content ul {
+            list-style: none;
+            margin: 1rem 0;
+        }
+
+        .timeline-content li {
+            padding: 0.5rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+            color: var(--gray);
+        }
+
+        .timeline-content li::before {
+            content: '•';
+            position: absolute;
+            left: 0;
+            color: var(--accent);
+            font-size: 1.5rem;
+            line-height: 1;
+        }
+
+        /* Call to Action */
+        .cta-section {
+            background: linear-gradient(135deg, var(--primary) 0%, #7a3d3d 100%);
+            color: white;
+            padding: 5rem 3rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-section::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.05) 0%, transparent 70%);
+            animation: pulse 15s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1) rotate(0deg); }
+            50% { transform: scale(1.1) rotate(5deg); }
+        }
+
+        .cta-section h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .cta-section p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--dark);
+            color: white;
+            padding: 4rem 3rem 2rem;
+        }
+
+        .footer-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+
+        .footer-logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .footer-description {
+            color: rgba(255,255,255,0.7);
+            line-height: 1.8;
+        }
+
+        .footer-section h4 {
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section a {
+            color: rgba(255,255,255,0.7);
+            text-decoration: none;
+            display: block;
+            padding: 0.5rem 0;
+            transition: color 0.3s ease;
+        }
+
+        .footer-section a:hover {
+            color: var(--secondary);
+        }
+
+        .footer-bottom {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            text-align: center;
+            color: rgba(255,255,255,0.5);
+            font-size: 0.9rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                gap: 1.5rem;
+            }
+
+            nav ul {
+                flex-direction: column;
+                gap: 1rem;
+                text-align: center;
+            }
+
+            .hero {
+                min-height: 500px;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .featured-event {
+                grid-template-columns: 1fr;
+                margin: -2rem 1rem 2rem;
+            }
+
+            .section {
+                padding: 3rem 1.5rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .entities-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .events-timeline {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+        }
+
+        /* Nota de diseño */
+        .design-note {
+            background: #FFF9E6;
+            border-left: 4px solid var(--accent);
+            padding: 2rem;
+            margin: 3rem auto;
+            max-width: 1400px;
+            border-radius: 10px;
+        }
+
+        .design-note h3 {
+            color: var(--primary);
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+
+        .design-note ul {
+            margin-left: 1.5rem;
+            color: var(--gray);
+        }
+
+        .design-note li {
+            margin: 0.5rem 0;
+        }
+    </style>
+</head>
+<body>
+    
+    <!-- NOTA DE DISEÑO -->
+    <div class="design-note" style="margin-top: 2rem;">
+        <h3>Actualitzacions aplicades en aquesta versió</h3>
+        <p><strong>Cambios implementados según tus indicaciones:</strong></p>
+        <ul>
+            <li><strong>Color de marca actualizado:</strong> Paleta centrada en #984c4c</li>
+            <li><strong>Tipografía aprobada:</strong> Playfair Display + DM Sans</li>
+            <li><strong>Imágenes de Barcelona:</strong> Sagrada Família y vistas del barrio en hero, eventos y cards</li>
+            <li><strong>SVG en lugar de emojis:</strong> Iconos vectoriales profesionales en las cards de "El Nostre Propòsit"</li>
+            <li><strong>Diseño responsive completo</strong></li>
+        </ul>
+        <p style="margin-top: 1rem;"><em>Todos los contenidos y estructura se mantienen según los requerimientos del proyecto.</em></p>
+    </div>
+
+    <!-- Header -->
+    <header>
+        <div class="header-content">
+            <div class="logo">
+                <div class="logo-img">SF</div>
+                <div class="logo-text">
+                    Coordinadora d'Entitats<br>
+                    <span style="font-weight: 400; font-size: 0.85rem;">Sagrada Família</span>
+                </div>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#inici">Inici</a></li>
+                    <li><a href="#qui-som">Qui som</a></li>
+                    <li><a href="#proposit">Propòsit</a></li>
+                    <li><a href="#transparencia">Transparència</a></li>
+                    <li><a href="#actualitat">Actualitat</a></li>
+                    <li><a href="#entitats">Entitats</a></li>
+                    <li><a href="#contacte">Contacte</a></li>
+                    <li><a href="#login" style="background: var(--primary); color: white; padding: 0.5rem 1.5rem; border-radius: 25px;">Àrea Privada</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="inici">
+        <div class="hero-content">
+            <h1>Benvinguts al barri de Sagrada Família!</h1>
+            <p>Entitat encarregada de l'organització de la Festa Major i Festa de Tardor al barri de la Sagrada Família de Barcelona</p>
+            <a href="#festa-major" class="cta-button">Descobreix la Festa Major 2025</a>
+        </div>
+    </section>
+
+    <!-- Featured Event -->
+    <div class="featured-event" id="festa-major">
+        <div class="event-image"></div>
+        <div class="event-content">
+            <span class="event-tag">Pròximament</span>
+            <h2>Festa Major 2025</h2>
+            <p class="event-date">Comença el 4 d'abril de 2025</p>
+            <p>Prepara't per viure 15 dies d'espectacles de cultura popular, concerts, batucades, sopars populars i molt més. La festa del barri que no et pots perdre!</p>
+            <a href="#" class="cta-button" style="margin-top: 1.5rem;">Veure programa complet</a>
+        </div>
+    </div>
+
+    <!-- Sección Qui Som -->
+    <section class="section" id="qui-som">
+        <div class="section-header">
+            <h2 class="section-title">Qui Som</h2>
+            <p class="section-subtitle">La Coordinadora d'Entitats del barri de la Sagrada Família és l'eix vertebrador de l'activitat associativa i cultural del nostre barri</p>
+        </div>
+        <div style="max-width: 900px; margin: 0 auto; text-align: center; line-height: 1.9; font-size: 1.1rem; color: var(--gray);">
+            <p>Som una entitat que agrupa i coordina les diferents associacions, entitats i col·lectius del barri de la Sagrada Família. El nostre objectiu és fomentar la participació ciutadana, la cohesió social i el desenvolupament cultural del barri.</p>
+        </div>
+    </section>
+
+    <!-- Sección Propósito CON SVGs -->
+    <section class="section" style="background: var(--gray-light);" id="proposit">
+        <div class="section-header">
+            <h2 class="section-title">El Nostre Propòsit</h2>
+            <p class="section-subtitle">Treballem cada dia per fer del barri de la Sagrada Família un lloc millor per viure</p>
+        </div>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; max-width: 1200px; margin: 0 auto;">
+            
+            <!-- Card 1: Missió -->
+            <div style="background: white; padding: 2.5rem; border-radius: 15px; box-shadow: 0 5px 20px rgba(0,0,0,0.05);">
+                <div class="icon-card">
+                    <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <circle cx="32" cy="32" r="30" fill="#984c4c" opacity="0.1"/>
+                        <path d="M32 8L38 24L54 26L42 38L45 54L32 46L19 54L22 38L10 26L26 24L32 8Z" fill="#984c4c" stroke="#984c4c" stroke-width="2" stroke-linejoin="round"/>
+                        <circle cx="32" cy="32" r="6" fill="#D4A574"/>
+                    </svg>
+                </div>
+                <h3 style="font-family: 'Playfair Display', serif; font-size: 1.5rem; color: var(--primary); margin-bottom: 1rem;">Missió</h3>
+                <p style="color: var(--gray); line-height: 1.8;">Promoure la participació activa de les entitats del barri en la vida social, cultural i festiva de la comunitat.</p>
+            </div>
+
+            <!-- Card 2: Visió -->
+            <div style="background: white; padding: 2.5rem; border-radius: 15px; box-shadow: 0 5px 20px rgba(0,0,0,0.05);">
+                <div class="icon-card">
+                    <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <circle cx="32" cy="32" r="30" fill="#984c4c" opacity="0.1"/>
+                        <ellipse cx="32" cy="32" rx="20" ry="12" fill="none" stroke="#984c4c" stroke-width="2.5"/>
+                        <circle cx="32" cy="32" r="8" fill="#984c4c"/>
+                        <circle cx="32" cy="32" r="4" fill="#D4A574"/>
+                        <path d="M12 32C12 32 20 20 32 20C44 20 52 32 52 32" stroke="#984c4c" stroke-width="2.5" stroke-linecap="round"/>
+                        <path d="M12 32C12 32 20 44 32 44C44 44 52 32 52 32" stroke="#984c4c" stroke-width="2.5" stroke-linecap="round"/>
+                    </svg>
+                </div>
+                <h3 style="font-family: 'Playfair Display', serif; font-size: 1.5rem; color: var(--primary); margin-bottom: 1rem;">Visió</h3>
+                <p style="color: var(--gray); line-height: 1.8;">Ser el referent de dinamització cultural i social del barri, construint ponts entre les diferents entitats i la ciutadania.</p>
+            </div>
+
+            <!-- Card 3: Valors -->
+            <div style="background: white; padding: 2.5rem; border-radius: 15px; box-shadow: 0 5px 20px rgba(0,0,0,0.05);">
+                <div class="icon-card">
+                    <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <circle cx="32" cy="32" r="30" fill="#984c4c" opacity="0.1"/>
+                        <path d="M32 12L35 22L45 25L35 28L32 38L29 28L19 25L29 22L32 12Z" fill="#984c4c"/>
+                        <path d="M20 40L22 44L26 46L22 48L20 52L18 48L14 46L18 44L20 40Z" fill="#D4A574"/>
+                        <path d="M44 40L46 44L50 46L46 48L44 52L42 48L38 46L42 44L44 40Z" fill="#D4A574"/>
+                        <circle cx="32" cy="32" r="6" fill="none" stroke="#984c4c" stroke-width="2"/>
+                    </svg>
+                </div>
+                <h3 style="font-family: 'Playfair Display', serif; font-size: 1.5rem; color: var(--primary); margin-bottom: 1rem;">Valors</h3>
+                <p style="color: var(--gray); line-height: 1.8;">Col·laboració, inclusió, transparència i compromís amb el barri i les seves tradicions.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección Entidades -->
+    <section class="section" id="entitats">
+        <div class="section-header">
+            <h2 class="section-title">Descobreix el barri</h2>
+            <p class="section-subtitle">Entitats que formen part del teixit associatiu del barri de Sagrada Família</p>
+        </div>
+        
+        <div class="entities-grid">
+            <!-- Primeras 24 entidades -->
+            <div class="entity-card">
+                <h3>Agrupament Escolta Antoni Gaudí</h3>
+                <p class="entity-contact"><a href="http://www.aeantonigaudi.org" target="_blank">www.aeantonigaudi.org</a></p>
+            </div>
+            
+            <div class="entity-card">
+                <h3>Assemblea Nacional Catalana (SFxI)</h3>
+                <p class="entity-contact"><a href="mailto:sagradafamilia@assemblea.cat">sagradafamilia@assemblea.cat</a></p>
+            </div>
+            
+            <div class="entity-card">
+                <h3>Associació de Veïns i Veïnes Sagrada Família</h3>
+                <p class="entity-contact"><a href="mailto:avvsagrada@gmail.com">avvsagrada@gmail.com</a></p>
+            </div>
+            
+            <div class="entity-card">
+                <h3>Associació Fal·lera Gegantera Sagrada Família</h3>
+                <p class="entity-contact">Entitat tradicional del barri</p>
+            </div>
+            
+            <div class="entity-card">
+                <h3>Asociación 100 % Salay Barcelona</h3>
+                <p class="entity-contact">Promoció cultural boliviana</p>
+            </div>
+            
+            <div class="entity-card">
+                <h3>Associació Hèlia</h3>
+                <p class="entity-contact"><a href="mailto:helia@heliadones.org">helia@heliadones.org</a></p>
+            </div>
+            
+            <div class="entity-card">
+                <h3>Associació Xarxa Dos Deu</h3>
+                <p class="entity-contact">Dinamització comunitària</p>
+            </div>
+            
+            <div class="entity-card">
+                <h3>Aula Ambiental – Punt Verd del barri</h3>
+                <p class="entity-contact"><a href="mailto:info@aulambiental.org">info@aulambiental.org</a></p>
+            </div>
+            
+            <div class="entity-card">
+                <h3>AMMBAR</h3>
+                <p class="entity-contact">Associació de mares i pares</p>
+            </div>
+            
+            <div class="entity-card">
+                <h3>Banc del temps Sagrada Família</h3>
+                <p class="entity-contact">Intercanvi de serveis i temps</p>
+            </div>
+            
+            <div class="entity-card">
+                <h3>Bestialots Espurnats</h3>
+                <p class="entity-contact"><a href="mailto:bestialotsespurnats@gmail.com">bestialotsespurnats@gmail.com</a></p>
+            </div>
+            
+            <div class="entity-card">
+                <h3>Beirão Percussió</h3>
+                <p class="entity-contact"><a href="mailto:info@beiraopercussio.cat">info@beiraopercussio.cat</a></p>
+            </div>
+
+            <div class="entity-card">
+                <h3>Biblioteca Sagrada Família</h3>
+                <p class="entity-contact">Josep M. Ainaud de Lasarte</p>
+            </div>
+
+            <div class="entity-card">
+                <h3>Casal de barri Espai 210</h3>
+                <p class="entity-contact"><a href="mailto:espai210@gmail.com">espai210@gmail.com</a></p>
+            </div>
+
+            <div class="entity-card">
+                <h3>Castellers de la Sagrada Família</h3>
+                <p class="entity-contact"><a href="http://www.castellerssagradafamilia.cat" target="_blank">www.castellerssagradafamilia.cat</a></p>
+            </div>
+
+            <div class="entity-card">
+                <h3>Centre Cívic Sagrada Família</h3>
+                <p class="entity-contact"><a href="mailto:info@ccsagradafamilia.net">info@ccsagradafamilia.net</a></p>
+            </div>
+
+            <div class="entity-card">
+                <h3>Club Esportiu Europa</h3>
+                <p class="entity-contact"><a href="http://www.ceeuropa.cat" target="_blank">www.ceeuropa.cat</a></p>
+            </div>
+
+            <div class="entity-card">
+                <h3>Clubs Claror</h3>
+                <p class="entity-contact"><a href="http://www.claror.cat" target="_blank">www.claror.cat</a> - Més que fitness!</p>
+            </div>
+
+            <div class="entity-card">
+                <h3>Cor Polifònic Sagrada Família</h3>
+                <p class="entity-contact"><a href="mailto:corpolifonicsf@gmail.com">corpolifonicsf@gmail.com</a></p>
+            </div>
+
+            <div class="entity-card">
+                <h3>Eix Comercial Sagrada Família</h3>
+                <p class="entity-contact"><a href="mailto:ecsfg@hotmail.com">ecsfg@hotmail.com</a></p>
+            </div>
+
+            <div class="entity-card">
+                <h3>El Guaret Cooperativa Ecològica</h3>
+                <p class="entity-contact">Alimentació sostenible</p>
+            </div>
+
+            <div class="entity-card">
+                <h3>El Poblet Feminista</h3>
+                <p class="entity-contact"><a href="mailto:elpobletfeminista@gmail.com">elpobletfeminista@gmail.com</a></p>
+            </div>
+
+            <div class="entity-card">
+                <h3>Escola Bailongu</h3>
+                <p class="entity-contact"><a href="http://www.bailongu.com" target="_blank">www.bailongu.com</a></p>
+            </div>
+
+            <div class="entity-card">
+                <h3>Encantsnous Eix Comercial</h3>
+                <p class="entity-contact"><a href="mailto:acencantsnous@hotmail.es">acencantsnous@hotmail.es</a></p>
+            </div>
+
+            <!-- Card "Ver más" -->
+            <div class="entity-card" style="background: var(--primary); color: white; display: flex; align-items: center; justify-content: center; cursor: pointer; border: none;">
+                <div style="text-align: center;">
+                    <div style="font-size: 3rem; margin-bottom: 1rem;">+</div>
+                    <h3 style="color: white; margin: 0;">Veure totes les entitats</h3>
+                    <p style="color: rgba(255,255,255,0.8); margin-top: 0.5rem;">i moltes més...</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Eventos Section -->
+    <section class="section" style="background: var(--gray-light);">
+        <div class="section-header">
+            <h2 class="section-title">Esdeveniments Organitzats</h2>
+            <p class="section-subtitle">Anualment organitzem la Festa Major (abril) i la Festa de Tardor (octubre) a més d'altres activitats al llarg de l'any</p>
+        </div>
+        
+        <div class="events-timeline">
+            <div class="timeline-card">
+                <div class="timeline-image" style="background: linear-gradient(135deg, rgba(152, 76, 76, 0.7) 0%, rgba(212, 165, 116, 0.6) 100%), url('https://images.unsplash.com/photo-1527975373525-6c003775eac6?w=800&q=80') center/cover;">
+                    <span class="timeline-badge">Abril</span>
+                </div>
+                <div class="timeline-content">
+                    <h3>Festa Major</h3>
+                    <ul>
+                        <li><strong>Festa:</strong> 23 d'abril (Sant Jordi)</li>
+                        <li>Espectacles de cultura popular</li>
+                        <li>Concerts i batucades</li>
+                        <li>Sopars populars</li>
+                        <li><strong>Durada:</strong> 15 dies</li>
+                    </ul>
+                    <p style="color: var(--gray); margin-top: 1.5rem; font-style: italic;">La celebració més gran del barri amb tradició i cultura catalana</p>
+                </div>
+            </div>
+
+            <div class="timeline-card">
+                <div class="timeline-image" style="background: linear-gradient(135deg, rgba(152, 76, 76, 0.7) 0%, rgba(61, 95, 79, 0.6) 100%), url('https://images.unsplash.com/photo-1533174072545-7a4b6ad7a6c3?w=800&q=80') center/cover;">
+                    <span class="timeline-badge">Octubre</span>
+                </div>
+                <div class="timeline-content">
+                    <h3>Festa de Tardor</h3>
+                    <ul>
+                        <li><strong>Quan:</strong> Finals d'octubre</li>
+                        <li>Activitats infantils</li>
+                        <li>Nit jove</li>
+                        <li>Cercavila</li>
+                        <li><strong>Durada:</strong> Un únic cap de setmana</li>
+                    </ul>
+                    <p style="color: var(--gray); margin-top: 1.5rem; font-style: italic;">Un cap de setmana ple d'activitats per a tota la família</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Call to Action -->
+    <section class="cta-section">
+        <h2>Vols formar part del barri?</h2>
+        <p>Uneix-te a la coordinadora i t'ajudarem a organitzar el teu acte al barri</p>
+        <a href="#contacte" class="cta-button">Contacta amb nosaltres</a>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contacte">
+        <div class="footer-content">
+            <div>
+                <div class="footer-logo">Coordinadora d'Entitats Sagrada Família</div>
+                <p class="footer-description">Entitat encarregada de l'organització de la Festa Major i Festa de Tardor al barri de la Sagrada Família de Barcelona</p>
+            </div>
+            
+            <div class="footer-section">
+                <h4>Navegació</h4>
+                <ul>
+                    <li><a href="#inici">Inici</a></li>
+                    <li><a href="#qui-som">Qui som</a></li>
+                    <li><a href="#proposit">Propòsit</a></li>
+                    <li><a href="#transparencia">Transparència</a></li>
+                    <li><a href="#actualitat">Actualitat</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-section">
+                <h4>Recursos</h4>
+                <ul>
+                    <li><a href="#entitats">Directori d'Entitats</a></li>
+                    <li><a href="#login">Àrea Privada</a></li>
+                    <li><a href="#">Repositori de Documents</a></li>
+                    <li><a href="#">Calendari d'Esdeveniments</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-section">
+                <h4>Legal</h4>
+                <ul>
+                    <li><a href="#">Avís Legal</a></li>
+                    <li><a href="#">Política de Privacitat</a></li>
+                    <li><a href="#">Política de Cookies</a></li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <p>&copy; 2025 Coordinadora d'Entitats Sagrada Família. Tots els drets reservats.</p>
+        </div>
+    </footer>
+
+</body>
+</html>
