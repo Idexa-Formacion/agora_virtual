@@ -11,3 +11,7 @@
 ._styles.css
 .github/._workflows
 .github/workflows/._static.yml
+
+# macOS System Files
+._*
+.DS_Store
