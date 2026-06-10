@@ -3,25 +3,60 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Coordinadora d'Entitats Sagrada Família - Proposta de Disseny</title>
+    <title>Coordinadora d'Entitats Sagrada Família</title>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;900&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
 
 </head>
 <body>
     
-    <!-- NOTA DE DISEÑO -->
-    <div class="design-note">
-        <h3>Actualitzacions aplicades en aquesta versió (25/03/2026)</h3>
-        <p><strong>Cambios implementados según tus indicaciones:</strong></p>
-        <ul>
-            <li><strong>Color de marca actualizado:</strong> Paleta centrada en #984c4c</li>
-            <li><strong>Tipografía aprobada:</strong> Playfair Display + DM Sans</li>
-            <li><strong>Imágenes de Barcelona:</strong> Sagrada Família y vistas del barrio en hero, eventos y cards</li>
-            <li><strong>SVG en lugar de emojis:</strong> Iconos vectoriales profesionales en las cards de "El Nostre Propòsit"</li>
-            <li><strong>Diseño responsive completo</strong></li>
-        </ul>
-        <p style="margin-top: 1rem;"><em>Todos los contenidos y estructura se mantienen según los requerimientos del proyecto.</em></p>
+    <!-- Modal de Actualitzacions -->
+    <div id="updateModal" class="modal-overlay">
+        <div class="modal-content">
+            <button class="modal-close" id="closeModal">&times;</button>
+            <h2>Actualitzacions aplicades en aquesta versió (10/06/2026)</h2>
+
+            <div class="modal-tabs">
+                <button class="modal-tab-btn active" data-tab="disseny">Disseny</button>
+                <button class="modal-tab-btn" data-tab="continguts">Continguts</button>
+            </div>
+
+            <div id="disseny" class="modal-tab-content active">
+                <h3>Actualitzacions de Disseny i Estructura</h3>
+                <ul>
+                    <li><strong>Color de marca actualizado:</strong> Paleta centrada en #984c4c</li>
+                    <li><strong>Tipografía aprobada:</strong> Playfair Display + DM Sans</li>
+                    <li><strong>Imágenes de Barcelona:</strong> Sagrada Família y vistas del barrio en hero, eventos y cards</li>
+                    <li><strong>SVG en lugar de emojis:</strong> Iconos vectoriales profesionales en las cards de "El Nostre Propòsit"</li>
+                    <li><strong>Diseño responsive completo</strong></li>
+                </ul>
+            </div>
+
+            <div id="continguts" class="modal-tab-content">
+                <h3>Revisió de Continguts (Document PDF 25/05/2026)</h3>
+                <ul>
+                    <li><strong>Greeting actualizado:</strong> Cambio a "Benvingudes i benvinguts al barri de la Sagrada Família" per a mayor inclusividad</li>
+                    <li><strong>Descripció de missió:</strong> Nuevas líneas sobre coordinación de entitats y Festa Major i Festa de Tardor</li>
+                    <li><strong>CTA principal:</strong> Cambio de "Descobreix la Festa Major 2025" a "Coneix la Coordinadora"</li>
+                    <li><strong>Event destacado:</strong> Cambio de Festa Major 2025 a Festa de Tardor con nueva descripción</li>
+                    <li><strong>Nuevo módulo:</strong> Adición de "Arxiu de festes" para conservar memoria festiva del barri</li>
+                    <li><strong>Sección Qui Som:</strong> Actualización de subtítulo y descripción sobre teixit associatiu</li>
+                    <li><strong>Missió:</strong> "Coordinar i enfortir el teixit associatiu del barri de la Sagrada Família..."</li>
+                    <li><strong>Visió:</strong> "Ser un punt de referència per a les entitats i per al veïnat..."</li>
+                    <li><strong>Valors:</strong> Ampliación a "Participació, col·laboració, inclusió, transparència, corresponsabilitat, cultura popular, memòria de barri i compromís amb la convivència"</li>
+                    <li><strong>Directori:</strong> Cambio de "Descobreix el barri" a "Entitats del barri" con subtítulo descriptivo</li>
+                    <li><strong>Sección d'eventos:</strong> Nuevas descripcions més detallades de Festa Major i Festa de Tardor</li>
+                    <li><strong>Bloc de inclusió:</strong> Adición de "Festes per a tothom" enfatizando participación lliure de discriminació</li>
+                    <li><strong>CTA secundaria:</strong> Cambio de "Vols formar part del barri?" a "Vols formar part de la vida associativa del barri?"</li>
+                    <li><strong>Footer:</strong> Adición de dirección (Ateneu El Poblet), telèfon (932 653 645) i email de contacte</li>
+                    <li><strong>Referència d'any:</strong> Actualización de 2025 a 2026 en títols i descripcions</li>
+                </ul>
+            </div>
+
+            <div class="modal-footer">
+                <button class="modal-btn-primary" id="acceptUpdates">Entès</button>
+            </div>
+        </div>
     </div>
 
     <!-- Header -->
@@ -58,9 +93,9 @@
     <!-- Hero Section -->
     <section class="hero" id="inici">
         <div class="hero-content">
-            <h1>Benvinguts al barri de Sagrada Família!</h1>
-            <p>Entitat encarregada de l'organització de la Festa Major i Festa de Tardor al barri de la Sagrada Família de Barcelona</p>
-            <a href="#festa-major" class="cta-button">Descobreix la Festa Major 2025</a>
+            <h1>Benvingudes i benvinguts al barri de la Sagrada Família</h1>
+            <p>Coordinem les entitats que fan possible la Festa Major i la Festa de Tardor</p>
+            <a href="#festa-major" class="cta-button">Coneix la Coordinadora</a>
         </div>
     </section>
 
@@ -68,11 +103,22 @@
     <div class="featured-event" id="festa-major">
         <div class="event-image"></div>
         <div class="event-content">
-            <span class="event-tag">Pròximament</span>
-            <h2>Festa Major 2025</h2>
-            <p class="event-date">Comença el 4 d'abril de 2025</p>
-            <p>Prepara't per viure 15 dies d'espectacles de cultura popular, concerts, batucades, sopars populars i molt més. La festa del barri que no et pots perdre!</p>
-            <a href="#" class="cta-button" style="margin-top: 1.5rem;">Veure programa complet</a>
+            <span class="event-tag">Properament</span>
+            <h2>Festa de Tardor</h2>
+            <p>La Festa de Tardor torna a omplir els carrers i places del barri amb cultura popular, activitats familiars, música, propostes de les entitats i espais de trobada veïnal. Dates i programa: a confirmar.</p>
+            <a href="#" class="cta-button" style="margin-top: 1.5rem;">Veure agenda i convocatòries</a>
+            <a href="#" style="display:block; margin-top: 0.75rem; color: var(--primary); font-size: 0.9rem;">Consulta l'arxiu de la Festa Major 2026</a>
+        </div>
+    </div>
+
+    <!-- Arxiu de programes -->
+    <div class="featured-event" style="background: var(--gray-light);">
+        <div class="event-image" style="background: linear-gradient(135deg, rgba(152,76,76,0.6) 0%, rgba(212,165,116,0.5) 100%), url('https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=800&q=80') center/cover;"></div>
+        <div class="event-content">
+            <span class="event-tag">Memòria festiva</span>
+            <h2>Arxiu de festes</h2>
+            <p>Recupera els programes de les darreres edicions de la Festa Major i la Festa de Tardor de la Sagrada Família. Un espai per conservar la memòria festiva del barri i donar visibilitat a les entitats que fan possible cada activitat.</p>
+            <a href="#" class="cta-button" style="margin-top: 1.5rem;">Veure programes anteriors</a>
         </div>
     </div>
 
@@ -80,10 +126,11 @@
     <section class="section" id="qui-som">
         <div class="section-header">
             <h2 class="section-title">Qui Som</h2>
-            <p class="section-subtitle">La Coordinadora d'Entitats del barri de la Sagrada Família és l'eix vertebrador de l'activitat associativa i cultural del nostre barri</p>
+            <p class="section-subtitle">El web és una porta d'entrada al teixit associatiu i un espai de coordinació per a les entitats</p>
         </div>
         <div class="section-text-center">
-            <p>Som una entitat que agrupa i coordina les diferents associacions, entitats i col·lectius del barri de la Sagrada Família. El nostre objectiu és fomentar la participació ciutadana, la cohesió social i el desenvolupament cultural del barri.</p>
+            <p>La Coordinadora d'Entitats Sagrada Família és l'espai de trobada del teixit associatiu del barri. Agrupa entitats, col·lectius i equipaments que treballen per enfortir la vida comunitària, compartir recursos i impulsar activitats obertes al veïnat.</p>
+            <p style="margin-top: 1rem;">Des de la coordinació i el treball col·laboratiu, fem possible la Festa Major, la Festa de Tardor i altres projectes que omplen de cultura, participació i convivència els carrers i places de la Sagrada Família.</p>
         </div>
     </section>
 
@@ -105,7 +152,7 @@
                     </svg>
                 </div>
                 <h3>Missió</h3>
-                <p>Promoure la participació activa de les entitats del barri en la vida social, cultural i festiva de la comunitat.</p>
+                <p>Coordinar i enfortir el teixit associatiu del barri de la Sagrada Família, promovent la participació veïnal i fent possibles activitats culturals, festives i comunitàries obertes a tothom.</p>
             </div>
 
             <!-- Card 2: Visió -->
@@ -121,7 +168,7 @@
                     </svg>
                 </div>
                 <h3>Visió</h3>
-                <p>Ser el referent de dinamització cultural i social del barri, construint ponts entre les diferents entitats i la ciutadania.</p>
+                <p>Ser un punt de referència per a les entitats i per al veïnat: un espai útil de trobada, informació i col·laboració que contribueixi a un barri més viu, cohesionat i participatiu.</p>
             </div>
 
             <!-- Card 3: Valors -->
@@ -136,7 +183,7 @@
                     </svg>
                 </div>
                 <h3>Valors</h3>
-                <p>Col·laboració, inclusió, transparència i compromís amb el barri i les seves tradicions.</p>
+                <p>Participació, col·laboració, inclusió, transparència, corresponsabilitat, cultura popular, memòria de barri i compromís amb la convivència.</p>
             </div>
         </div>
     </section>
@@ -144,8 +191,8 @@
     <!-- Sección Entidades -->
     <section class="section" id="entitats">
         <div class="section-header">
-            <h2 class="section-title">Descobreix el barri</h2>
-            <p class="section-subtitle">Entitats que formen part del teixit associatiu del barri de Sagrada Família</p>
+            <h2 class="section-title">Entitats del barri</h2>
+            <p class="section-subtitle">La Coordinadora reuneix entitats molt diverses que treballen en àmbits com la cultura popular, l'educació en el lleure, el comerç de proximitat, l'acció social, la salut, la memòria, la música, el feminisme, el medi ambient i la participació veïnal.</p>
         </div>
         
         <div class="entities-grid">
@@ -284,52 +331,46 @@
     <!-- Eventos Section -->
     <section class="section" style="background: var(--gray-light);">
         <div class="section-header">
-            <h2 class="section-title">Esdeveniments Organitzats</h2>
-            <p class="section-subtitle">Anualment organitzem la Festa Major (abril) i la Festa de Tardor (octubre) a més d'altres activitats al llarg de l'any</p>
+            <h2 class="section-title">2 grans cites de barri: Festa Major i Festa de Tardor</h2>
+            <p class="section-subtitle">La programació és fruit del treball col·laboratiu de les entitats del barri</p>
         </div>
-        
+
         <div class="events-timeline">
             <div class="timeline-card">
                 <div class="timeline-image" style="background: linear-gradient(135deg, rgba(152, 76, 76, 0.7) 0%, rgba(212, 165, 116, 0.6) 100%), url('https://images.unsplash.com/photo-1527975373525-6c003775eac6?w=800&q=80') center/cover;">
                     <span class="timeline-badge">Abril</span>
                 </div>
                 <div class="timeline-content">
-                    <h3>Festa Major</h3>
-                    <ul>
-                        <li><strong>Festa:</strong> 23 d'abril (Sant Jordi)</li>
-                        <li>Espectacles de cultura popular</li>
-                        <li>Concerts i batucades</li>
-                        <li>Sopars populars</li>
-                        <li><strong>Durada:</strong> 15 dies</li>
-                    </ul>
-                    <p style="color: var(--gray); margin-top: 1.5rem; font-style: italic;">La celebració més gran del barri amb tradició i cultura catalana</p>
+                    <h3>Festa Major de la Sagrada Família</h3>
+                    <p>La Festa Major és la gran cita de primavera del barri. Durant diversos dies, entitats, veïnat i equipaments omplen carrers i places amb cultura popular, cercaviles, gegants, castells, foc, concerts, tallers, activitats infantils, esport, àpats populars i espais de trobada.</p>
+                    <p style="color: var(--gray); margin-top: 1rem; font-style: italic;">La programació és fruit del treball col·laboratiu de les entitats del barri i expressa la força d'una comunitat viva, diversa i compromesa amb l'espai públic.</p>
                 </div>
             </div>
 
             <div class="timeline-card">
                 <div class="timeline-image" style="background: linear-gradient(135deg, rgba(152, 76, 76, 0.7) 0%, rgba(61, 95, 79, 0.6) 100%), url('https://images.unsplash.com/photo-1533174072545-7a4b6ad7a6c3?w=800&q=80') center/cover;">
-                    <span class="timeline-badge">Octubre</span>
+                    <span class="timeline-badge">Tardor</span>
                 </div>
                 <div class="timeline-content">
                     <h3>Festa de Tardor</h3>
-                    <ul>
-                        <li><strong>Quan:</strong> Finals d'octubre</li>
-                        <li>Activitats infantils</li>
-                        <li>Nit jove</li>
-                        <li>Cercavila</li>
-                        <li><strong>Durada:</strong> Un únic cap de setmana</li>
-                    </ul>
-                    <p style="color: var(--gray); margin-top: 1.5rem; font-style: italic;">Un cap de setmana ple d'activitats per a tota la família</p>
+                    <p>La Festa de Tardor és el moment de retrobada després de l'estiu i una nova oportunitat per fer barri al carrer. El programa combina activitats familiars, cultura popular, música, propostes de les entitats, comerç de proximitat, tallers, gastronomia popular i espais de convivència.</p>
+                    <p style="color: var(--gray); margin-top: 1rem; font-style: italic;">Una festa de format més concentrat, habitualment durant un cap de setmana, que reforça els vincles entre entitats i veïnat.</p>
                 </div>
             </div>
+        </div>
+
+        <!-- Festes lliures de violències -->
+        <div style="max-width: 800px; margin: 3rem auto 0; background: white; border-left: 4px solid var(--primary); padding: 2rem; border-radius: 0 8px 8px 0;">
+            <h3 style="color: var(--primary); margin-bottom: 0.75rem;">Festes per a tothom</h3>
+            <p>Volem unes festes obertes, respectuoses i lliures de masclisme, lgtbifòbia i qualsevol forma de discriminació. La participació de tothom és clau perquè els carrers i places siguin espais de convivència, cultura i cura comunitària.</p>
         </div>
     </section>
 
     <!-- Call to Action -->
     <section class="cta-section">
-        <h2>Vols formar part del barri?</h2>
-        <p>Uneix-te a la coordinadora i t'ajudarem a organitzar el teu acte al barri</p>
-        <a href="#contacte" class="cta-button">Contacta amb nosaltres</a>
+        <h2>Vols formar part de la vida associativa del barri?</h2>
+        <p>Si la teva entitat vol participar en la Coordinadora, proposar una activitat o sumar-se a la Festa Major o la Festa de Tardor, posa't en contacte amb nosaltres. T'ajudarem a trobar l'espai de coordinació més adequat i a connectar amb altres entitats del barri.</p>
+        <a href="#contacte" class="cta-button">Contacta amb la Coordinadora</a>
     </section>
 
     <!-- Footer -->
@@ -337,7 +378,12 @@
         <div class="footer-content">
             <div>
                 <div class="footer-logo">Coordinadora d'Entitats Sagrada Família</div>
-                <p class="footer-description">Entitat encarregada de l'organització de la Festa Major i Festa de Tardor al barri de la Sagrada Família de Barcelona</p>
+                <p class="footer-description">Espai de trobada i coordinació de les entitats del barri de la Sagrada Família. Organitzem i impulsem, amb les entitats membres, la Festa Major, la Festa de Tardor i altres iniciatives comunitàries al llarg de l'any.</p>
+                <p class="footer-description" style="margin-top: 0.75rem;">
+                    <strong>Adreça:</strong> Ateneu El Poblet. C/Nàpols 268-270 · 08025 Barcelona<br>
+                    <strong>Telèfon:</strong> 932 653 645<br>
+                    <strong>Contacte:</strong> <a href="mailto:info@coordinadorabarrisagradafamilia.cat" style="color: inherit;">info@coordinadorabarrisagradafamilia.cat</a>
+                </p>
             </div>
             
             <div class="footer-section">
@@ -372,7 +418,7 @@
         </div>
         
         <div class="footer-bottom">
-            <p>&copy; 2025 Coordinadora d'Entitats Sagrada Família. Tots els drets reservats.</p>
+            <p>&copy; 2026 Coordinadora d'Entitats Sagrada Família. Tots els drets reservats.</p>
         </div>
     </footer>
 
@@ -398,6 +444,107 @@
                 mainNav.classList.remove('open');
             });
         });
+
+        // Modal functionality
+        const updateModal = document.getElementById('updateModal');
+        const closeModal = document.getElementById('closeModal');
+        const acceptUpdates = document.getElementById('acceptUpdates');
+        const modalTabs = document.querySelectorAll('.modal-tab-btn');
+
+        // Show modal on page load
+        window.addEventListener('load', () => {
+            const hasSeenModal = localStorage.getItem('updateModalSeen_20260610');
+            if (!hasSeenModal) {
+                updateModal.classList.remove('hidden');
+            }
+        });
+
+        // Close modal
+        function closeUpdateModal() {
+            updateModal.classList.add('hidden');
+            localStorage.setItem('updateModalSeen_20260610', 'true');
+        }
+
+        closeModal.addEventListener('click', closeUpdateModal);
+        acceptUpdates.addEventListener('click', closeUpdateModal);
+
+        // Close modal when clicking outside
+        updateModal.addEventListener('click', (e) => {
+            if (e.target === updateModal) {
+                closeUpdateModal();
+            }
+        });
+
+        // Tab switching functionality
+        modalTabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                // Remove active class from all tabs and contents
+                document.querySelectorAll('.modal-tab-btn').forEach(t => t.classList.remove('active'));
+                document.querySelectorAll('.modal-tab-content').forEach(c => c.classList.remove('active'));
+
+                // Add active class to clicked tab and corresponding content
+                tab.classList.add('active');
+                const tabName = tab.getAttribute('data-tab');
+                document.getElementById(tabName).classList.add('active');
+            });
+        });
     </script>
+
+    <!-- Version Switcher -->
+    <style>
+        .version-switcher {
+            position: fixed;
+            bottom: 24px;
+            right: 24px;
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(0, 0, 0, 0.1);
+            padding: 12px 20px;
+            border-radius: 50px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            z-index: 9999;
+            text-decoration: none;
+            color: #1A1A2E;
+            font-family: 'DM Sans', sans-serif;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        .version-switcher:hover {
+            transform: translateY(-5px);
+            background: #fff;
+            box-shadow: 0 15px 35px rgba(152, 76, 76, 0.2);
+            color: #984c4c;
+        }
+        .version-switcher .v-dot {
+            width: 10px;
+            height: 10px;
+            background: #984c4c;
+            border-radius: 50%;
+            position: relative;
+        }
+        .version-switcher .v-dot::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #984c4c;
+            border-radius: 50%;
+            animation: pulse-ring 2s infinite;
+        }
+        @keyframes pulse-ring {
+            0% { transform: scale(0.8); opacity: 0.5; }
+            80%, 100% { transform: scale(2.5); opacity: 0; }
+        }
+    </style>
+    <a href="index2.html" class="version-switcher">
+        <span class="v-dot"></span>
+        <span>Explorar Versió 2 (Dinàmica)</span>
+    </a>
 </body>
 </html>
